@@ -88,7 +88,7 @@ function calcCannula() {
   const psi = parseFloat(document.getElementById("cPsi").value);
   const tank = parseFloat(document.getElementById("cTank").value);
   const travel = parseFloat(document.getElementById("cTravelTime").value);
-  const time = (psi * tank) / flow;
+  const time = ((psi - 200 ) * tank) / flow;
   const safe = time - travel;
   Swal.fire("Cannula / Mask", `ใช้งานได้ ${time.toFixed(1)} นาที<br>${aiComment(safe)}`, "info");
 }
@@ -100,7 +100,7 @@ function calcHFNC() {
   const tank = parseFloat(document.getElementById("hfTank").value);
   const travel = parseFloat(document.getElementById("hfTravelTime").value);
   const o2flow = flow * ((fio2 - 0.21) / 0.79);
-  const time = (psi * tank) / o2flow;
+  const time = ((psi - 200 ) * tank) / o2flow;
   const safe = time - travel;
   Swal.fire("HFNC", `ใช้ออกซิเจน ${o2flow.toFixed(2)} L/min<br>ใช้งานได้ ${time.toFixed(1)} นาที<br>${aiComment(safe)}`, "info");
 }
@@ -114,7 +114,7 @@ function calcVentilator() {
   const travel = parseFloat(document.getElementById("vTravelTime").value);
   const mv = vt * rr;
   const o2flow = (mv + 4) * fio2;
-  const time = (psi * tank) / o2flow;
+  const time = ((psi - 200 ) * tank) / o2flow;
   const safe = time - travel;
   Swal.fire("Ventilator", `Minute Volume: ${mv.toFixed(2)}<br>ใช้ออกซิเจน ${o2flow.toFixed(2)} L/min<br>ใช้งานได้ ${time.toFixed(1)} นาที<br>${aiComment(safe)}`, "info");
 }
